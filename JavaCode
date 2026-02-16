@@ -1,0 +1,52 @@
+package Comprehensive;
+class Account {
+    String name;
+    double balance;
+    double rate;
+    Account(String name, double balance, double rate) {
+        this.name = name;
+        this.balance = balance;
+        this.rate = rate;
+    }
+    void showDetails() {
+        System.out.println("Account holder: " + name);
+        System.out.println("Balance: " + balance);
+    }
+}
+class SavingsAccount extends Account {
+    SavingsAccount(String name, double balance, double rate) {
+        super(name, balance, rate);
+    }
+    void calculateInterest() {
+        System.out.println("Calculating Savings Account Interest:");
+        double interest = balance * rate / 100;
+        balance = balance + interest;
+        System.out.println("Interest added: " + interest);
+    }
+}
+class CurrentAccount extends Account {
+    CurrentAccount(String name, double balance, double rate) {
+        super(name, balance, rate);
+    }
+    void processAccount() {
+        System.out.println("Current Account does not provide Interest");
+        double withdrawAmount = 2000;
+        balance = balance - withdrawAmount;
+        System.out.println("Withdrawal Successful");
+    }
+}
+public class BankApplication {
+    public static void main(String[] args) {
+        SavingsAccount a = new SavingsAccount("Satwika", 15000, 4);
+        CurrentAccount b = new CurrentAccount("Varsha", 25000, 0);
+        a.showDetails();
+        a.calculateInterest();
+        a.showDetails();
+        System.out.println("---------------");
+        b.showDetails();
+        b.processAccount();
+        b.showDetails();
+    }
+}
+
+
